@@ -1,0 +1,22 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "ansible" do |ansible|
+   ansible.vm.box = "centos/7"
+   ansible.vm.hostname = "alfa"
+   ansible.vm.box_check_update = false
+   ansible.vm.network "private_network", ip: "192.168.10.50", nic_type: "virtio", virtualbox__intnet: "deployment"
+   
+   ansible.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.name = "Ansible"
+      vb.memory = "512"
+      vb.default_nic_type = "virtio"
+   end
+   
+   ansible.vm.provision "shell", path: "../script/init.sh"
+   ansible.vm.provision "shell", inline: "yum install -y ansible"
+   
+  end
+end

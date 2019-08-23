@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
    end
    
    ansible.vm.provision "shell", path: "../script/init.sh"
-   ansible.vm.provision "shell", inline: "yum install -y ansible"
+   ansible.vm.provision "shell", path: "../script/installAnsible.sh"
    
   end
 end

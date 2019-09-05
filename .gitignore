@@ -1,4 +1,4 @@
 #ignore ./vagrant/
 **/.vagrant/
 #ignore test from book Ansible for devops
-/CENTOS_BOOK
+/BOOK
